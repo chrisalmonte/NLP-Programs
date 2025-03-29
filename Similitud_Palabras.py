@@ -35,21 +35,23 @@ def normalize_text(text: str, remove_stopwords=False, stopwords: list=None):
         tokens = word_tokenizer.tokenize(sentence)
         #Filtrar tokens.
         for token in tokens:
-            #Ignorar tokens sin letras
-            if re.match(r"^\W$", token):
+            #Ignorar numeros romanos (se que faltan más)
+            if re.match(r"^M{0,3}(CM|CD|D?C{0,3})?(XC|XL|L?X{0,3})?(IX|IV|V?I{0,3})?$", token):
                 continue
-            #Ignorar tokens numéricos
-            if re.match(r"^(([-+/*])*([0-9])*([,.])*([0-9])*)*$", token):
-                continue            
-            if re.match(r"^\d+[aoº°]$", token):
-                continue            
-            #Ignorar links
-            if re.match(r"^(.*)\.(.*)$", token):
-                continue
-            #Agregar en minúsculas.
+            #Pasar a minúsculas.
             token = token.lower()
-            token = re.sub(r"[\W\-]", "", token)
-            #Ignorar stopwords
+            #Ignorar links y direcciones
+            if re.match(r"(http\S+)|(www\S+)|(\S+\.net)|(\S+\.com)|(\S+\.mx)", token):
+                continue
+            if re.match(r"^\S+@\S+\.\S+$", token):
+                continue
+            token = re.sub(r"[\W\d_]", "", token)
+            #Ignorar tokens vacios
+            if re.match(r"^\s$", token) or len(token) < 2:
+                continue
+            if re.match(r"^er$", token):
+                continue    
+            #Ignorar stopwords            
             if remove_stopwords and (token in stopwords):
                 continue
             processed_sentence.append(token)

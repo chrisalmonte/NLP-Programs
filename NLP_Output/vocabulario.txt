@@ -1,7 +1,5 @@
 Vocabulario del corpus:
 
-10a
-1á
 aas
 abajo
 abanderado
@@ -34,6 +32,7 @@ abstener
 abundancia
 abundando
 abundar
+ac
 acabar
 acabarán
 academia
@@ -456,7 +455,7 @@ apóstol
 aquel
 aquélla
 aquí
-aquí20publicado
+aquípublicado
 arabes
 arabia
 arbitraiedad
@@ -670,7 +669,6 @@ añadirir
 año
 años
 aún
-b
 babia
 bachillerato
 bachilleres
@@ -1703,7 +1701,6 @@ cómputo
 cónclave
 córdova
 cúpula
-d
 dado
 dame
 damocles
@@ -1712,7 +1709,6 @@ datar
 dato
 dañar
 daño
-dc
 dea
 dean
 debajo
@@ -2116,6 +2112,7 @@ dos
 dotar
 dow
 dpa
+dr
 drama
 dramáticamente
 drenaje
@@ -2261,6 +2258,7 @@ emisión
 emitido
 emitir
 emoción
+emodhtm
 empalmacer
 empalmar
 empantanamiento
@@ -2680,8 +2678,6 @@ exxon
 exótico
 exóticos
 ezln
-f
-f16
 fabricación
 fabricante
 fabrico
@@ -2915,7 +2911,6 @@ físicamente
 físico
 fórmula
 fósil
-g8
 gabinete
 gabriel
 gala
@@ -3187,7 +3182,6 @@ huérfano
 hábil
 héctor
 hélice
-i
 iasasa
 iberoamericana
 icc
@@ -3198,6 +3192,7 @@ idem
 identidad
 identificación
 identificar
+identificarao
 ideología
 ideológico
 ideólogo
@@ -3212,7 +3207,6 @@ igualitario
 igualmente
 ii
 iif
-iii
 ilegal
 ilegalmente
 iluminar
@@ -3571,7 +3565,6 @@ iturbide
 iu
 iusa
 iusacel
-iv
 izquierda
 izquierdista
 izquierdo
@@ -3850,8 +3843,6 @@ luna
 lunes
 luther
 luz
-lv
-lx
 lynch
 lágrima
 láser
@@ -3866,7 +3857,6 @@ lógica
 lógico
 lópez
 lúcido
-m1
 maastricht
 macedonia
 machado
@@ -3997,9 +3987,8 @@ mayúsculo
 mazorca
 maíz
 mañana
-mc2
+mc
 mccain
-mci
 mcnamara
 mdd
 mdp
@@ -4096,8 +4085,7 @@ miedo
 miembro
 mientras
 mier
-mig21
-mig29
+mig
 migrant
 miguel
 mil
@@ -4935,6 +4923,7 @@ preguntar
 pregunto
 preguntársele
 prejuicio
+preliminar
 prematuro
 premeditado
 premia
@@ -5152,7 +5141,7 @@ provocación
 provocar
 provocaré
 proximidad
-proximityfzu39b
+proximityfzub
 proyectado
 proyectil
 proyecto
@@ -5608,6 +5597,7 @@ riqueza
 ritmo
 rivera
 rivero
+rl
 robado
 robar
 robbins
@@ -5667,7 +5657,6 @@ réditos
 régimen
 río
 rótulo
-s
 saber
 sabines
 sacar
@@ -6079,7 +6068,6 @@ sólido
 sólo
 súbitamente
 súbito
-t
 tabasqueño
 tabla
 tabú
@@ -6327,7 +6315,6 @@ tía
 título
 tóxico
 túnel
-u
 uam
 ubicado
 ubicar
@@ -6460,7 +6447,6 @@ veta
 veterano
 veto
 vez
-vi
 viabilidad
 viable
 viajar
@@ -6485,7 +6471,6 @@ vietnam
 vigencia
 vigente
 vigilancia
-vii
 viktor
 villa
 villanueva
@@ -6573,11 +6558,8 @@ witter
 wood
 world
 wright
-x
 xavier
 xii
-xiii
-xiv
 xochimilco
 xv
 xvi
@@ -6625,7 +6607,6 @@ zócalo
 étnico
 éxito
 índice
-ó
 óptica
 órden
 último
