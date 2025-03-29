@@ -2,7 +2,6 @@ Vocabulario del corpus:
 
 10a
 1á
-a
 aas
 abajo
 abanderado
@@ -222,7 +221,6 @@ ajena
 ajeno
 ajustar
 ajuste
-al
 alan
 alargar
 alarmado
@@ -262,7 +260,6 @@ alerta
 aleta
 alfonso
 alfredo
-algo
 alguien
 alguno
 aliado
@@ -369,7 +366,6 @@ annan
 annie
 anomalía
 anotar
-ante
 anteanoche
 anteayer
 antecedente
@@ -377,7 +373,6 @@ antemano
 anteojo
 anterior
 anteriormente
-antes
 antiaéreo
 anticipación
 anticipar
@@ -1261,7 +1256,6 @@ comité
 comités
 commerce
 communications
-como
 compadre
 company
 comparación
@@ -1315,7 +1309,6 @@ comunications
 comunidad
 comunista
 común
-con
 concanaco
 concarujo
 concebir
@@ -1484,7 +1477,6 @@ continuo
 continúe
 continúir
 contorsión
-contra
 contrabando
 contracción
 contradicción
@@ -1631,10 +1623,8 @@ cu
 cuadrado
 cuadrados
 cuadro
-cual
 cualidad
 cualquiera
-cuando
 cuantioso
 cuanto
 cuarenta
@@ -1723,7 +1713,6 @@ dato
 dañar
 daño
 dc
-de
 dea
 dean
 debajo
@@ -1771,7 +1760,6 @@ definitivamente
 definitivo
 dejar
 dejemos
-del
 delante
 delderecho
 delegacional
@@ -1891,7 +1879,6 @@ descubierto
 descubrir
 descubrirno
 descuento
-desde
 desdecir
 desdén
 deseable
@@ -2124,7 +2111,6 @@ don
 donación
 donado
 donativo
-donde
 dorantes
 dos
 dotar
@@ -2147,7 +2133,6 @@ dulce
 dundee
 duradero
 durango
-durante
 durar
 duro
 duval
@@ -2160,7 +2145,6 @@ dígito
 dólar
 dólares
 dónde
-e
 earth
 ebitda
 ebro
@@ -2217,7 +2201,6 @@ ejercer
 ejercicio
 ejidal
 ejército
-el
 elaboración
 elaborado
 elaborador
@@ -2301,7 +2284,6 @@ empresario
 empresas
 empujar
 empuje
-en
 enajenarno
 enardecer
 encabezado
@@ -2379,7 +2361,6 @@ entonces
 entrada
 entrar
 entraríamos
-entre
 entredicho
 entrega
 entregar
@@ -2414,9 +2395,7 @@ equivalente
 equivaler
 equivocado
 equivocar
-era
 erar
-eres
 ernesto
 erosionar
 errante
@@ -2425,7 +2404,6 @@ error
 errores
 errático
 ervin
-es
 esbirro
 esbozar
 escala
@@ -2465,14 +2443,12 @@ escuelas
 escándalo
 escándalos
 escéptico
-ese
 esencia
 esencial
 esfera
 esfuerzo
 esgrimir
 esmeralda
-eso
 espacio
 espado
 espalda
@@ -2528,8 +2504,6 @@ estables
 estacionamiento
 estación
 estadio
-estado
-estados
 estadunidens
 estadunidense
 estaing
@@ -2538,13 +2512,11 @@ estallar
 estan
 estancado
 estandarte
-estar
 estarer
 estatal
 estatización
 estatuto
 estañol
-este
 esteban
 estela
 esterilidad
@@ -2557,11 +2529,9 @@ estimo
 estimulante
 estipulado
 estipular
-esto
 estocolmo
 estofo
 estorbar
-estoy
 estrada
 estrado
 estratega
@@ -2582,7 +2552,6 @@ estudio
 estudios
 estudioso
 estupefaciente
-está
 estándar
 estár
 estético
@@ -2905,7 +2874,6 @@ frutos
 fría
 fuego
 fuente
-fuera
 fueren
 fuero
 fuerte
@@ -3125,7 +3093,6 @@ hank
 harris
 harry
 harto
-hasta
 hathaway
 hecho
 hegemonía
@@ -3706,7 +3673,6 @@ kong
 kosovar
 kosovo
 kremlin
-la
 labastida
 labor
 laboral
@@ -3844,7 +3810,6 @@ llevar
 lloyd
 lluvia
 llámese
-lo
 loable
 loca
 local
@@ -4120,7 +4085,6 @@ mexicounión
 meza
 mezcla
 mezclar
-mi
 michael
 michel
 michelena
@@ -4246,7 +4210,6 @@ movilizar
 movimiento
 mp
 muchacho
-mucho
 muerte
 muerto
 muestra
@@ -4268,7 +4231,6 @@ musical
 mutuo
 muñoz
 mágico
-más
 máxima
 máxime
 máximo
@@ -4282,7 +4244,6 @@ méxicoespaña
 méxicoestadunidensess
 mínimo
 mínimos
-mío
 míralos
 móvil
 múltiple
@@ -4300,7 +4261,6 @@ nacionén
 nacistir
 nación
 nací
-nada
 nadar
 nadie
 nadleque
@@ -4369,7 +4329,6 @@ neutro
 nevada
 new
 nexo
-ni
 nicanor
 nicolescu
 nidia
@@ -4382,7 +4341,6 @@ nivel
 niña
 niñas
 niño
-no
 nobel
 noble
 noche
@@ -4422,7 +4380,6 @@ noé
 ntx
 nucleares
 nudo
-nuestro
 nueva
 nuevamente
 nueve
@@ -4441,7 +4398,6 @@ nyt
 nº
 número
 núñez
-o
 oaxaca
 obedecer
 objetividad
@@ -4590,8 +4546,6 @@ otay
 otero
 otorgado
 otorgar
-otra
-otro
 otrora
 otánico
 oír
@@ -4636,7 +4590,6 @@ papel
 papelería
 paquete
 par
-para
 parabrisa
 paracaidista
 paradójico
@@ -4774,7 +4727,6 @@ permiso
 permitir
 permitirer
 permítannos
-pero
 perpetrado
 perredista
 perredistas
@@ -4874,7 +4826,6 @@ poblano
 pobre
 pobreza
 pobrísima
-poco
 pocos
 poder
 poderes
@@ -4908,12 +4859,10 @@ popular
 popularidad
 populismo
 populista
-por
 porcentaje
 porfirio
 pormenor
 pormenorizado
-porque
 porrúa
 portador
 portahelicóptero
@@ -5271,7 +5220,6 @@ públicas
 público
 qatar
 qu
-que
 quedado
 quedar
 quehacer
@@ -5284,7 +5232,6 @@ quemar
 querer
 querétaro
 quiebras
-quien
 quiere
 quinta
 quintana
@@ -5297,7 +5244,6 @@ quizá
 quizás
 quién
 quiérase
-qué
 racimo
 racismos
 radicado
@@ -5789,8 +5735,6 @@ schaffer
 schiaffino
 schweizer
 sct
-se
-sea
 sebastián
 secas
 sección
@@ -5849,7 +5793,6 @@ sensibilidad
 sensor
 sentar
 sentencia
-sentido
 sentimiento
 sentir
 separación
@@ -5860,7 +5803,6 @@ ser
 serbia
 serbio
 serbios
-seremos
 serenidad
 serer
 sergio
@@ -5875,7 +5817,6 @@ servicio
 servicios
 servidor
 servir
-sería
 sesión
 sesma
 setenta
@@ -5930,7 +5871,6 @@ simplemente
 simpático
 simultáneamenir
 simultáneo
-sin
 sinaia
 sindical
 sindicato
@@ -5955,7 +5895,6 @@ soberania
 soberano
 soberanía
 sobrant
-sobre
 sobrecalentar
 sobrepasar
 sobrerrepresentación
@@ -6004,7 +5943,6 @@ solórzano
 sombra
 someter
 sometido
-son
 sonar
 sonora
 sonoro
@@ -6041,7 +5979,6 @@ strafon
 straus
 street
 stunam
-su
 suarez
 subconsciente
 subcontinente
@@ -6129,15 +6066,12 @@ sustento
 sustentár
 sustitución
 suterm
-suya
-suyo
 suzuki
 suárez
 system
 sábado
 sámano
 sánchez
-sí
 símbolo
 síntoma
 sólidas
@@ -6161,10 +6095,8 @@ taller
 tamaulipas
 tamaño
 tambaleante
-también
 tampoco
 tan
-tanto
 tapachula
 tapar
 tapia
@@ -6174,7 +6106,6 @@ tardir
 tarea
 tarifa
 tasa
-te
 tecnicismo
 tecnología
 tecnológico
@@ -6270,8 +6201,6 @@ tocar
 toda
 todav
 todavía
-todo
-todos
 tojolabal
 tolerancia
 tolerar
@@ -6379,7 +6308,6 @@ trámite
 tránsito
 tsazagami
 tsc
-tu
 tubo
 tula
 tumba
@@ -6398,7 +6326,6 @@ término
 tía
 título
 tóxico
-tú
 túnel
 u
 uam
@@ -6410,8 +6337,6 @@ ugesto
 ultimo
 ultrasecreto
 umbral
-un
-una
 unam
 unanimidad
 unar
@@ -6436,7 +6361,6 @@ universidades
 universitario
 universo
 unión
-uno
 upn
 urbanas
 urbano
@@ -6660,13 +6584,10 @@ xvi
 xvii
 xx
 xxi
-y
-ya
 yamarone
 yamil
 yeltsin
 yerrar
-yo
 york
 yuc
 yucatán
@@ -6696,7 +6617,6 @@ zócalo
 ángulo
 ánimo
 área
-él
 élite
 énfasis
 época
