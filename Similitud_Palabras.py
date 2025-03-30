@@ -1,4 +1,5 @@
 #Palabras similares
+import json
 import nltk
 import os
 import re
@@ -104,4 +105,9 @@ with open(output_dir + "contexto.txt", 'w', encoding='utf-8') as file:
         file.write("\n")
     file.write("\n")
 
-
+context_vector = []
+for i in range(len(doc[0])):
+    vector = []
+    for j in range(len(context)):
+        vector.append(context[j].get(doc[0][i], 0))
+    context_vector.append(vector)
