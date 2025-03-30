@@ -38,22 +38,18 @@ def normalize_text(text: str, remove_stopwords=False, stopwords: list=None):
         tokens = word_tokenizer.tokenize(sentence)
         #Filtrar tokens.
         for token in tokens:
+            token = re.sub(r"-", "", token)
+            if not token.isalpha():
+                continue
             #Ignorar numeros romanos
             if re.match(r"^M{0,3}(CM|CD|D?C{0,3})?(XC|XL|L?X{0,3})?(IX|IV|V?I{0,3})?$", token):
                 continue
             #Pasar a minúsculas.
             token = token.lower()
-            #Ignorar links y direcciones
-            if re.match(r"(http\S+)|(www\S+)|(\S+\.net)|(\S+\.com)|(\S+\.mx)", token):
-                continue
-            if re.match(r"^\S+@\S+\.\S+$", token):
-                continue
             token = re.sub(r"[\W\d_]", "", token)
             #Ignorar tokens vacios
             if re.match(r"^\s$", token) or len(token) < 2:
-                continue
-            if re.match(r"^er$", token):
-                continue    
+                continue 
             #Ignorar stopwords            
             if remove_stopwords and (token in stopwords):
                 continue

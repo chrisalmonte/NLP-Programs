@@ -32,7 +32,6 @@ abstener
 abundancia
 abundando
 abundar
-ac
 acabar
 acabarán
 academia
@@ -327,7 +326,6 @@ amistad
 amor
 amortiguador
 amortización
-amp
 amparo
 amplar
 ampliación
@@ -455,7 +453,6 @@ apóstol
 aquel
 aquélla
 aquí
-aquípublicado
 arabes
 arabia
 arbitraiedad
@@ -577,7 +574,6 @@ atrocidad
 atropellar
 atroz
 atrás
-att
 atín
 atómica
 aub
@@ -2112,7 +2108,6 @@ dos
 dotar
 dow
 dpa
-dr
 drama
 dramáticamente
 drenaje
@@ -2258,7 +2253,6 @@ emisión
 emitido
 emitir
 emoción
-emodhtm
 empalmacer
 empalmar
 empantanamiento
@@ -2844,7 +2838,6 @@ francisco
 franco
 francés
 franja
-franois
 franqueza
 franquismo
 franquista
@@ -3192,7 +3185,6 @@ idem
 identidad
 identificación
 identificar
-identificarao
 ideología
 ideológico
 ideólogo
@@ -3987,7 +3979,6 @@ mayúsculo
 mazorca
 maíz
 mañana
-mc
 mccain
 mcnamara
 mdd
@@ -4085,7 +4076,6 @@ miedo
 miembro
 mientras
 mier
-mig
 migrant
 miguel
 mil
@@ -4923,7 +4913,6 @@ preguntar
 pregunto
 preguntársele
 prejuicio
-preliminar
 prematuro
 premeditado
 premia
@@ -5141,7 +5130,6 @@ provocación
 provocar
 provocaré
 proximidad
-proximityfzub
 proyectado
 proyectil
 proyecto
@@ -5597,7 +5585,6 @@ riqueza
 ritmo
 rivera
 rivero
-rl
 robado
 robar
 robbins
@@ -5954,7 +5941,6 @@ soto
 south
 southwestern
 souto
-sp
 spoil
 sprint
 sprints
