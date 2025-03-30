@@ -18,7 +18,7 @@ lemmatize = True
 print(type(stopwords_list))
 sentence_tokenizer = nltk.data.load('tokenizers/punkt_tab/spanish.pickle')
 word_tokenizer = nltk.tokenize.ToktokTokenizer()
-context_window = 8
+context_window = 6
 nlp = stanza.Pipeline(lang="es", processors='tokenize, lemma')
 
 #Función para extraer texto de un archivo
@@ -56,7 +56,7 @@ def normalize_text(text: str, remove_stopwords=False, stopwords: list=None):
                 continue
             #Pasar a minúsculas.
             token = token.lower()
-            token = re.sub(r"[\W\d_]", "", token)
+            token = re.sub(r"[\W\d_\s]", "", token)
             #Ignorar tokens vacios
             if re.match(r"^\s$", token) or len(token) < 2:
                 continue 
@@ -65,7 +65,8 @@ def normalize_text(text: str, remove_stopwords=False, stopwords: list=None):
                 continue
             processed_sentence.append(token)
             word_tokens.add(token)
-        sentences_processed.append(processed_sentence)
+        if processed_sentence not in sentences_processed:
+            sentences_processed.append(processed_sentence)
     return (sorted(word_tokens), sentences_processed)
 
 #Función para guardar la salida en un archivo
@@ -119,10 +120,11 @@ for i in range(len(doc[0])):
     for j in range(len(context)):
         vector.append(context[j].get(doc[0][i], 0))
     context_vector.append(vector)
-context_vector_pca = PCA(n_components=3).fit_transform(context_vector)
+context_vector_pca = PCA(n_components=500).fit_transform(context_vector)
 context_vector_pca_data = {}
 for i, word in enumerate(doc[0]):
     context_vector_pca_data[word] = context_vector_pca[i].tolist()
+
 #Guardar vectores de contexto en un archivo
 with open(output_dir + "term_document_data.pkl", "wb") as file:
     pickle.dump(context_vector_pca_data, file)

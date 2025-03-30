@@ -20,10 +20,8 @@ def simmilarity_value(word_a, word_b):
     cos_theta = np.dot(vector1, vector2) / (np.linalg.norm(vector1) * np.linalg.norm(vector2))
     return max(cos_theta, 0)
 
-
-
 #Comparar palabra
-word = "empresa"
+word = "pri"
 
 similitud = []
 for token in vectors:
@@ -34,4 +32,3 @@ with open("NLP_Output/similitud_%s.txt" % word, 'w', encoding="utf-8") as file:
     file.write("Similitud de la palabra \"%s\" con las demás palabras del vocabulario:\n\n" % word)
     for valor in similitud:
         file.write("%s: %f\n" % (valor[0], valor[1]))
-
