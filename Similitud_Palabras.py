@@ -1,9 +1,10 @@
 #Palabras similares
-import json
 import nltk
 import os
+import pickle
 import re
 from bs4 import BeautifulSoup
+from sklearn.decomposition import PCA
 
 #Config.
 output_dir = "NLP_Output/"
@@ -80,6 +81,7 @@ doc = normalize_text(text, remove_stopwords=True, stopwords=stopwords_list)
 save("\n".join(sorted(stopwords_list)), "stopwords.txt", "Lista de stopwords usadas (NLTK Corpus):")
 save("\n".join(doc[0]), "vocabulario.txt", "Vocabulario del corpus:")
 save("\n\n".join(" ".join(sentence) for sentence in doc[1]), "oraciones.txt", "Oraciones normalizadas del corpus:")
+#Extraer contexto de las palabras
 context = []
 for word in doc[0]:
     word_context = {}
@@ -100,10 +102,16 @@ with open(output_dir + "contexto.txt", 'w', encoding='utf-8') as file:
             file.write("\t%s:%d\n" % (str(value), context[i][value]))
         file.write("\n")
     file.write("\n")
-
+#Generar vectores de contexto
 context_vector = []
 for i in range(len(doc[0])):
     vector = []
     for j in range(len(context)):
         vector.append(context[j].get(doc[0][i], 0))
     context_vector.append(vector)
+context_vector_pca = PCA(n_components=3).fit_transform(context_vector)
+context_vector_pca_data = {}
+for i, word in enumerate(doc[0]):
+    context_vector_pca_data[word] = context_vector_pca[i].tolist()
+with open(output_dir + "term_document_data.pkl", "wb") as file:
+    pickle.dump(context_vector_pca_data, file)
