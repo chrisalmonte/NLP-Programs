@@ -83,7 +83,7 @@ if not os.path.exists(output_dir):
     except:
         raise OSError("No se pudo crear el directorio de salida.")
 
-#Generar vectores de palabras
+#Extraer texto del archivo
 text = str_from_file(corpus, parse_HTML=parse_HTML)
 save(text, "texto_extraido.txt", "Texto sin etiquetas extraído del archivo \"%s\":" % corpus)
 doc = normalize_text(text, remove_stopwords=remove_stopwords, stopwords=stopwords_list)
@@ -101,16 +101,17 @@ for word in doc[0]:
                 if i != index:
                     word_context[sentence[i]] = (word_context.get(sentence[i], 0) + 1)
     context.append(word_context)
-
+#Guardar contexto en un archivo
 with open(output_dir + "contexto.txt", 'w', encoding='utf-8') as file:
     file.write("Contexto de las palabras en el vocabulario:\n\n")
     for i, word in enumerate(doc[0]):
         file.write("Palabra: %s\n" % word)
         file.write("Contexto:\n")
         for value in context[i]:
-            file.write("\t%s:%d\n" % (str(value), context[i][value]))
+            file.write("\t%s: %d\n" % (str(value), context[i][value]))
         file.write("\n")
     file.write("\n")
+
 #Generar vectores de contexto
 context_vector = []
 for i in range(len(doc[0])):
@@ -122,5 +123,6 @@ context_vector_pca = PCA(n_components=3).fit_transform(context_vector)
 context_vector_pca_data = {}
 for i, word in enumerate(doc[0]):
     context_vector_pca_data[word] = context_vector_pca[i].tolist()
+#Guardar vectores de contexto en un archivo
 with open(output_dir + "term_document_data.pkl", "wb") as file:
     pickle.dump(context_vector_pca_data, file)
