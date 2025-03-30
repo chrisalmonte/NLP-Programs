@@ -10,8 +10,11 @@ from sklearn.decomposition import PCA
 #Config.
 output_dir = "NLP_Output/"
 corpus = "../../Corpora/e990505_mod.htm"
+parse_HTML = True
+remove_stopwords = True
 stopwords_list = nltk.corpus.stopwords.words("spanish")
 stopwords_list.remove("estado")
+lemmatize = True
 print(type(stopwords_list))
 sentence_tokenizer = nltk.data.load('tokenizers/punkt_tab/spanish.pickle')
 word_tokenizer = nltk.tokenize.ToktokTokenizer()
@@ -42,7 +45,7 @@ def normalize_text(text: str, remove_stopwords=False, stopwords: list=None):
     for sentence in doc.sentences:
         processed_sentence = []
         #tokens = word_tokenizer.tokenize(sentence)        
-        tokens = [word.lemma for word in sentence.words]
+        tokens = [(word.lemma if lemmatize else word.text) for word in sentence.words]
         #Filtrar tokens.
         for token in tokens:
             token = re.sub(r"-", "", token)
@@ -81,9 +84,9 @@ if not os.path.exists(output_dir):
         raise OSError("No se pudo crear el directorio de salida.")
 
 #Generar vectores de palabras
-text = str_from_file(corpus, parse_HTML=True)
+text = str_from_file(corpus, parse_HTML=parse_HTML)
 save(text, "texto_extraido.txt", "Texto sin etiquetas extraído del archivo \"%s\":" % corpus)
-doc = normalize_text(text, remove_stopwords=True, stopwords=stopwords_list)
+doc = normalize_text(text, remove_stopwords=remove_stopwords, stopwords=stopwords_list)
 save("\n".join(sorted(stopwords_list)), "stopwords.txt", "Lista de stopwords usadas (NLTK Corpus):")
 save("\n".join(doc[0]), "vocabulario.txt", "Vocabulario del corpus:")
 save("\n\n".join(" ".join(sentence) for sentence in doc[1]), "oraciones.txt", "Oraciones normalizadas del corpus:")
