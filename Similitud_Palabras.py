@@ -1,5 +1,6 @@
 #Palabras similares
 import nltk
+import stanza
 import os
 import pickle
 import re
@@ -8,11 +9,14 @@ from sklearn.decomposition import PCA
 
 #Config.
 output_dir = "NLP_Output/"
-corpus = "../../Corpora/e990505_mod_lemmatized_spacy.txt"
+corpus = "../../Corpora/e990505_mod.htm"
 stopwords_list = nltk.corpus.stopwords.words("spanish")
+stopwords_list.remove("estado")
+print(type(stopwords_list))
 sentence_tokenizer = nltk.data.load('tokenizers/punkt_tab/spanish.pickle')
 word_tokenizer = nltk.tokenize.ToktokTokenizer()
 context_window = 8
+nlp = stanza.Pipeline(lang="es", processors='tokenize, lemma')
 
 #Función para extraer texto de un archivo
 def str_from_file(file_path: str, file_encoding: str="utf-8", parse_HTML=True):
@@ -29,14 +33,16 @@ def normalize_text(text: str, remove_stopwords=False, stopwords: list=None):
     if remove_stopwords and stopwords is None:
         raise ValueError("No se proporcionó lista de stopwords.")
     #Tokenizar oraciones.
-    sentence_tokens = sentence_tokenizer.tokenize(text)
-    sentence_tokens = list(set(sentence_tokens))    
+    #sentence_tokens = sentence_tokenizer.tokenize(text)
+    #sentence_tokens = list(set(sentence_tokens))    
     #Tokenizar palabras
+    doc = nlp(text)
     word_tokens = set()
     sentences_processed = []
-    for sentence in sentence_tokens:
+    for sentence in doc.sentences:
         processed_sentence = []
-        tokens = word_tokenizer.tokenize(sentence)
+        #tokens = word_tokenizer.tokenize(sentence)        
+        tokens = [word.lemma for word in sentence.words]
         #Filtrar tokens.
         for token in tokens:
             token = re.sub(r"-", "", token)
@@ -75,8 +81,8 @@ if not os.path.exists(output_dir):
         raise OSError("No se pudo crear el directorio de salida.")
 
 #Generar vectores de palabras
-text = str_from_file(corpus, parse_HTML=False)
-#save(text, "texto_extraido.txt", "Texto sin etiquetas extraído del archivo \"%s\":" % corpus)
+text = str_from_file(corpus, parse_HTML=True)
+save(text, "texto_extraido.txt", "Texto sin etiquetas extraído del archivo \"%s\":" % corpus)
 doc = normalize_text(text, remove_stopwords=True, stopwords=stopwords_list)
 save("\n".join(sorted(stopwords_list)), "stopwords.txt", "Lista de stopwords usadas (NLTK Corpus):")
 save("\n".join(doc[0]), "vocabulario.txt", "Vocabulario del corpus:")
