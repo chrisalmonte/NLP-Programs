@@ -1,3 +1,5 @@
+#Módulo que compara los vectores de las palabras, una vez que se han generado con el módulo Generar_Vectores_Similitud.py
+
 import pickle
 import numpy as np
 
@@ -21,7 +23,7 @@ def simmilarity_value(word_a, word_b):
     return max(cos_theta, 0)
 
 #Comparar palabra
-word = "pri"
+word = "casa"
 
 similitud = []
 for token in vectors:

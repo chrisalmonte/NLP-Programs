@@ -1,4 +1,5 @@
-#Palabras similares
+#Módulo que genera los vectores de similitud de las palabras en un corpus de texto. Crea el archivo term_document_data.pkl con los vectores de similitud de las palabras en el corpus.
+
 import nltk
 import stanza
 import os
@@ -8,16 +9,18 @@ from bs4 import BeautifulSoup
 from sklearn.decomposition import PCA
 
 #Config.
-output_dir = "NLP_Output/"
-corpus = "../../Corpora/e990505_mod.htm"
-parse_HTML = True
-remove_stopwords = True
-stopwords_list = nltk.corpus.stopwords.words("spanish")
-stopwords_list.remove("estado")
-lemmatize = True
-print(type(stopwords_list))
-sentence_tokenizer = nltk.data.load('tokenizers/punkt_tab/spanish.pickle')
-word_tokenizer = nltk.tokenize.ToktokTokenizer()
+OUTPUT_DIR = "NLP_Output/"
+CORPUS = "../../Corpora/e990505_mod.htm"
+PARSE_HTML = True
+REMOVE_STOPWORDS = True
+STOPWORD_LIST = nltk.corpus.stopwords.words("spanish")
+#Eliminar stopwords de la lista
+STOPWORD_LIST.remove("estado")
+STOPWORD_LIST.extend(["ser", "hacer"])
+LEMMATIZE = True
+SENTENCE_TOKENIZER = nltk.data.load('tokenizers/punkt_tab/spanish.pickle')
+WORD_TOKENIZER = nltk.tokenize.ToktokTokenizer()
+PCA_COMPONENTS = 500
 context_window = 6
 nlp = stanza.Pipeline(lang="es", processors='tokenize, lemma')
 
@@ -45,7 +48,7 @@ def normalize_text(text: str, remove_stopwords=False, stopwords: list=None):
     for sentence in doc.sentences:
         processed_sentence = []
         #tokens = word_tokenizer.tokenize(sentence)        
-        tokens = [(word.lemma if lemmatize else word.text) for word in sentence.words]
+        tokens = [(word.lemma if LEMMATIZE else word.text) for word in sentence.words]
         #Filtrar tokens.
         for token in tokens:
             token = re.sub(r"-", "", token)
@@ -71,24 +74,24 @@ def normalize_text(text: str, remove_stopwords=False, stopwords: list=None):
 
 #Función para guardar la salida en un archivo
 def save(content, filename: str, description: str = ""):    
-    path = output_dir + filename
+    path = OUTPUT_DIR + filename
     with open(path, 'w', encoding='utf-8') as file:
         file.write("%s\n\n" % description)
         file.write(content)
         file.write("\n")
 
 #Validar directorio de salida
-if not os.path.exists(output_dir):
+if not os.path.exists(OUTPUT_DIR):
     try:
-        os.mkdir(output_dir)
+        os.mkdir(OUTPUT_DIR)
     except:
         raise OSError("No se pudo crear el directorio de salida.")
 
 #Extraer texto del archivo
-text = str_from_file(corpus, parse_HTML=parse_HTML)
-save(text, "texto_extraido.txt", "Texto sin etiquetas extraído del archivo \"%s\":" % corpus)
-doc = normalize_text(text, remove_stopwords=remove_stopwords, stopwords=stopwords_list)
-save("\n".join(sorted(stopwords_list)), "stopwords.txt", "Lista de stopwords usadas (NLTK Corpus):")
+text = str_from_file(CORPUS, parse_HTML=PARSE_HTML)
+save(text, "texto_extraido.txt", "Texto sin etiquetas extraído del archivo \"%s\":" % CORPUS)
+doc = normalize_text(text, remove_stopwords=REMOVE_STOPWORDS, stopwords=STOPWORD_LIST)
+save("\n".join(sorted(STOPWORD_LIST)), "stopwords.txt", "Lista de stopwords usadas (NLTK Corpus):")
 save("\n".join(doc[0]), "vocabulario.txt", "Vocabulario del corpus:")
 save("\n\n".join(" ".join(sentence) for sentence in doc[1]), "oraciones.txt", "Oraciones normalizadas del corpus:")
 #Extraer contexto de las palabras
@@ -103,7 +106,7 @@ for word in doc[0]:
                     word_context[sentence[i]] = (word_context.get(sentence[i], 0) + 1)
     context.append(word_context)
 #Guardar contexto en un archivo
-with open(output_dir + "contexto.txt", 'w', encoding='utf-8') as file:
+with open(OUTPUT_DIR + "contexto.txt", 'w', encoding='utf-8') as file:
     file.write("Contexto de las palabras en el vocabulario:\n\n")
     for i, word in enumerate(doc[0]):
         file.write("Palabra: %s\n" % word)
@@ -120,11 +123,11 @@ for i in range(len(doc[0])):
     for j in range(len(context)):
         vector.append(context[j].get(doc[0][i], 0))
     context_vector.append(vector)
-context_vector_pca = PCA(n_components=500).fit_transform(context_vector)
+context_vector_pca = PCA(n_components=PCA_COMPONENTS).fit_transform(context_vector)
 context_vector_pca_data = {}
 for i, word in enumerate(doc[0]):
     context_vector_pca_data[word] = context_vector_pca[i].tolist()
 
 #Guardar vectores de contexto en un archivo
-with open(output_dir + "term_document_data.pkl", "wb") as file:
+with open(OUTPUT_DIR + "term_document_data.pkl", "wb") as file:
     pickle.dump(context_vector_pca_data, file)
