@@ -3075,7 +3075,6 @@ gámiz
 género
 gómez
 güero
-haber
 habilidad
 habitacional
 habitación
@@ -3085,7 +3084,6 @@ hablar
 hablaron
 hablo
 hablé
-hacer
 hacia
 hacienda
 halago
@@ -5806,7 +5804,6 @@ separación
 separar
 septiembre
 sepultará
-ser
 serbia
 serbio
 seremo
