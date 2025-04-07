@@ -39,12 +39,14 @@ def write_comparison(file_name: str, header:str, **kwargs):
             file.write("\n")
             
 
-word = "partido"
+word = "maquinaria"
 vecs_fraw = open_data(OUTPUT_DIR + "term_frequency_raw.pkl")
 vecs_frel = open_data(OUTPUT_DIR + "term_frequency_relative.pkl")
 vecs_fsub = open_data(OUTPUT_DIR + "term_frequency_sublin.pkl")
+vecs_idfbm25 = open_data(OUTPUT_DIR + "term_frequency_idfbm25.pkl")
 sim_word_raw = simmilarity_values(word, vecs_fraw)
 sim_word_rel = simmilarity_values(word, vecs_frel)
 sim_word_sub = simmilarity_values(word, vecs_fsub)
+sim_word_idfbm25 = simmilarity_values(word, vecs_idfbm25)
 
-write_comparison("similitud_%s_comparacion.txt" % word, "Similitud de la palabra \"%s\"" % word, Raw_Frequency=sim_word_raw, Relative_Frequency=sim_word_rel, Sublineal=sim_word_sub)
+write_comparison("comparacion_%s.txt" % word, "Similitud de la palabra \"%s\"" % word, Raw_Frequency=sim_word_raw, Relative_Frequency=sim_word_rel, Sublineal=sim_word_sub, IDF_BM25=sim_word_idfbm25)
