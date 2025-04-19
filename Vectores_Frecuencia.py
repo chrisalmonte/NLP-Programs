@@ -6,6 +6,7 @@ import stanza
 import os
 import pickle
 import re
+import spacy
 from bs4 import BeautifulSoup
 from sklearn.decomposition import PCA
 
@@ -22,7 +23,7 @@ LEMMATIZE = True
 SENTENCE_TOKENIZER = nltk.data.load('tokenizers/punkt_tab/spanish.pickle')
 WORD_TOKENIZER = nltk.tokenize.ToktokTokenizer()
 PCA_COMPONENTS = 500
-context_window = 6
+context_window = 8
 nlp = stanza.Pipeline(lang="es", processors='tokenize, lemma')
 
 class WordContext:
@@ -116,7 +117,7 @@ def save_pickle(filename: str, data):
 def apply_PCA(data: list, componets: int = PCA_COMPONENTS):
     matrix_pca = PCA(n_components=componets).fit_transform(freq_raw)
     dict_pca = {}
-    for i, word in enumerate(doc[0]):
+    for i, word in enumerate(unique_tokens):
         dict_pca[word] = matrix_pca[i].tolist()
     return dict_pca
 
@@ -126,8 +127,6 @@ def idf_bm25(b=0.75, k=1.2):
     avg_doc_len = sum(word_context.length for word_context in context_objs) / len(context_objs)
     for word in unique_tokens:
         idf_k = sum(1 if word in word_context.bag else 0 for word_context in context_objs)
-        if idf_k == 0:
-            print("Word [%s] does not appear in any context." % word)
         vector = []
         for word_context in context_objs:
             c = word_context.getCount(word)
@@ -151,14 +150,15 @@ unique_tokens = doc[0]
 normalized_sentences = doc[1]
 token_frequency = doc[2]
 save("\n".join(sorted(STOPWORD_LIST)), "stopwords.txt", "Lista de stopwords usadas (NLTK Corpus):")
-save("\n".join(doc[0]), "vocabulario.txt", "Vocabulario del corpus:")
-save("\n\n".join(" ".join(sentence) for sentence in doc[1]), "oraciones.txt", "Oraciones normalizadas del corpus:")
+save("\n".join(unique_tokens), "vocabulario.txt", "Vocabulario del corpus:")
+save("\n\n".join(" ".join(sentence) for sentence in normalized_sentences), "oraciones.txt", "Oraciones normalizadas del corpus:")
+
 #Extraer contexto de las palabras
 context = []
 context_objs = []
-for word in doc[0]:
+for word in unique_tokens:
     word_context = {}
-    for sentence in doc[1]:
+    for sentence in normalized_sentences:
         if word in sentence:
             index = sentence.index(word)
             for i in range(max(0, index - int(context_window/2)), min(index + int(context_window/2) + 1, len(sentence))):
@@ -167,15 +167,17 @@ for word in doc[0]:
     context_obj = WordContext(word, word_context, corpus_frequency=token_frequency[word])
     context_objs.append(context_obj)
     context.append(word_context)
+
 #Guardar frecuencias en un archivo
 with open(OUTPUT_DIR + "frecuencias.txt", 'w', encoding='utf-8') as file:
     file.write("Frecuencias de las palabras en el vocabulario:\n\n")
     for token in unique_tokens:
         file.write(token.ljust(20) + ": " + str(token_frequency[token]) + "\n")
+
 #Guardar contexto en un archivo
 with open(OUTPUT_DIR + "contexto.txt", 'w', encoding='utf-8') as file:
     file.write("Contexto de las palabras en el vocabulario:\n\n")
-    for i, word in enumerate(doc[0]):
+    for i, word in enumerate(unique_tokens):
         file.write("Palabra: %s\n" % word)
         file.write("Contexto:\n")
         for value in context[i]:
@@ -185,27 +187,27 @@ with open(OUTPUT_DIR + "contexto.txt", 'w', encoding='utf-8') as file:
 
 #Generar vectores de contexto con Raw frequency
 freq_raw = []
-for i in range(len(doc[0])):
+for i in range(len(unique_tokens)):
     vector = []
     for j in range(len(context)):
-        vector.append(context[j].get(doc[0][i], 0))
+        vector.append(context[j].get(unique_tokens[i], 0))
     freq_raw.append(vector)
     context_objs[i].setFrequencyVector(vector)
 
 #Generar vectores de contexto con Frecuencia relativa
 freq_relative = []
-for i in range(len(doc[0])):
+for i in range(len(unique_tokens)):
     vector = []
     for j in range(len(context)):
-        vector.append(0 if len(context[j]) == 0 else (context[j].get(doc[0][i], 0)/len(context[j])))
+        vector.append(0 if len(context[j]) == 0 else (context[j].get(unique_tokens[i], 0)/len(context[j])))
     freq_relative.append(vector)
 
 #Generar vectores de contexto con TF Sublineal
 freq_sublin = []
-for i in range(len(doc[0])):
+for i in range(len(unique_tokens)):
     vector = []
     for j in range(len(context)):
-        vector.append(math.log(1 + context[j].get(doc[0][i], 0), 2))
+        vector.append(math.log(1 + context[j].get(unique_tokens[i], 0), 2))
     freq_sublin.append(vector)
 
 freq_idf_bm25 = idf_bm25()
