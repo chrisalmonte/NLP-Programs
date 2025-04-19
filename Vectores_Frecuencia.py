@@ -24,7 +24,7 @@ SENTENCE_TOKENIZER = nltk.data.load('tokenizers/punkt_tab/spanish.pickle')
 WORD_TOKENIZER = nltk.tokenize.ToktokTokenizer()
 PCA_COMPONENTS = 500
 context_window = 8
-nlp = stanza.Pipeline(lang="es", processors='tokenize, lemma')
+nlp = stanza.Pipeline(lang="es", processors='tokenize, lemma, mwt, pos')
 
 class WordContext:
     def __init__(self, word: str, context_counts: dict, corpus_frequency: int = 0):
