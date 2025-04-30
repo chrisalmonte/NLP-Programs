@@ -1647,7 +1647,6 @@ datar
 dato
 dañar
 daño
-dc
 dea
 dean
 debajo
@@ -3084,9 +3083,7 @@ ignorar
 igual
 igualitario
 igualmente
-ii
 iif
-iii
 ilegal
 ilegalmente
 iluminar
@@ -3436,7 +3433,6 @@ iturbide
 iu
 iusa
 iusacel
-iv
 izquierda
 izquierdista
 izquierdo
@@ -3708,7 +3704,6 @@ luna
 lunes
 luther
 luz
-lv
 lx
 lynch
 lágrima
@@ -6213,7 +6208,6 @@ vetar
 veterano
 veto
 vez
-vi
 viabilidad
 viable
 viajar
@@ -6238,7 +6232,6 @@ vietnam
 vigencia
 vigente
 vigilancia
-vii
 viktor
 villa
 villanueva

@@ -1647,7 +1647,6 @@ datar               : 1
 dato                : 5
 dañar               : 1
 daño                : 9
-dc                  : 2
 dea                 : 5
 dean                : 1
 debajo              : 2
@@ -3084,9 +3083,7 @@ ignorar             : 6
 igual               : 14
 igualitario         : 1
 igualmente          : 4
-ii                  : 5
 iif                 : 1
-iii                 : 1
 ilegal              : 2
 ilegalmente         : 1
 iluminar            : 1
@@ -3436,7 +3433,6 @@ iturbide            : 1
 iu                  : 3
 iusa                : 2
 iusacel             : 2
-iv                  : 4
 izquierda           : 4
 izquierdista        : 1
 izquierdo           : 1
@@ -3708,7 +3704,6 @@ luna                : 3
 lunes               : 10
 luther              : 2
 luz                 : 4
-lv                  : 1
 lx                  : 3
 lynch               : 2
 lágrima             : 1
@@ -6213,7 +6208,6 @@ vetar               : 1
 veterano            : 2
 veto                : 1
 vez                 : 61
-vi                  : 1
 viabilidad          : 1
 viable              : 2
 viajar              : 1
@@ -6238,7 +6232,6 @@ vietnam             : 2
 vigencia            : 2
 vigente             : 1
 vigilancia          : 6
-vii                 : 1
 viktor              : 1
 villa               : 14
 villanueva          : 7

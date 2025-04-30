@@ -1097,8 +1097,8 @@ Contexto:
 	plan: 1
 	iniciar: 1
 	hoy: 1
-	ii: 1
 	encuentro: 1
+	estudiantil: 1
 	hablar: 1
 	proceso: 1
 	interno: 1
@@ -3330,8 +3330,6 @@ Contexto:
 	caso: 1
 	presentar: 1
 	juzgado: 1
-	ii: 1
-	vi: 1
 	distrito: 1
 	federal: 1
 	autorizar: 1
@@ -7472,7 +7470,7 @@ Contexto:
 	ordóñez: 1
 	foro: 1
 	permanente: 1
-	lv: 1
+	juez: 2
 	penal: 1
 	rafael: 1
 	guerra: 2
@@ -7482,7 +7480,6 @@ Contexto:
 	df: 1
 	hora: 1
 	propio: 1
-	juez: 1
 	declarar: 1
 	formalmente: 1
 	presa: 1
@@ -9233,8 +9230,8 @@ Contexto:
 	consejo: 1
 	organismo: 1
 	privado: 1
+	consulta: 1
 	artículo: 1
-	iv: 1
 	examen: 1
 	detallado: 1
 	economía: 1
@@ -9497,7 +9494,6 @@ Contexto:
 Palabra: ap
 Contexto:
 	washington: 1
-	dc: 1
 	mayo: 2
 	ntx: 1
 	dpa: 1
@@ -10206,8 +10202,8 @@ Contexto:
 	orden: 2
 	librado: 2
 	juez: 1
-	lv: 1
 	penal: 1
+	rafael: 1
 	ministerio: 1
 	público: 1
 	respectivo: 1
@@ -11625,23 +11621,26 @@ Contexto:
 	países: 1
 	revelan: 1
 	consulta: 4
-	iv: 4
 	examen: 2
 	detallado: 2
 	especializado: 1
+	sepultará: 1
 	fmi: 2
 	publicar: 1
 	denominado: 1
 	anual: 1
+	economía: 1
 	consejo: 4
 	organismo: 1
 	llamado: 1
 	forma: 1
 	avisos: 1
 	información: 2
+	pública: 1
 	informe: 1
 	finalizar: 1
 	aviso: 1
+	público: 1
 	estudioso: 1
 	acuerdo: 1
 	llegar: 1
@@ -15278,9 +15277,9 @@ Contexto:
 
 Palabra: aviso
 Contexto:
+	fmi: 1
 	consulta: 1
 	artículo: 1
-	iv: 1
 	finalizar: 1
 	información: 1
 	público: 1
@@ -15289,9 +15288,9 @@ Contexto:
 
 Palabra: avisos
 Contexto:
+	llamado: 1
 	consulta: 1
 	artículo: 1
-	iv: 1
 	forma: 1
 	información: 1
 	pública: 1
@@ -22958,9 +22957,9 @@ Contexto:
 	tlatelolco: 1
 	zócalo: 1
 	par: 1
-	ii: 1
 	jornada: 1
 	nacional: 1
+	difundir: 1
 	mes: 1
 	renovación: 1
 	apenas: 1
@@ -24159,7 +24158,7 @@ Contexto:
 	presentar: 1
 	juzgado: 1
 	administrativo: 1
-	ii: 1
+	distrito: 1
 	aprobación: 1
 	reglamento: 1
 	proyecto: 1
@@ -24320,8 +24319,8 @@ Contexto:
 	noé: 1
 	león: 1
 	comandante: 1
-	vii: 1
 	región: 1
+	militar: 1
 
 Palabra: castellanos
 Contexto:
@@ -29135,10 +29134,10 @@ Contexto:
 	noé: 1
 	castañón: 1
 	león: 1
-	vii: 1
 	región: 1
 	militar: 1
 	josé: 1
+	gómez: 1
 
 Palabra: combate
 Contexto:
@@ -33667,7 +33666,7 @@ Contexto:
 	mayo: 2
 	ciento: 1
 	informe: 1
-	iv: 1
+	finalizar: 1
 	semejar: 1
 	william: 1
 	miller: 1
@@ -34865,18 +34864,20 @@ Contexto:
 	países: 1
 	revelan: 1
 	artículo: 4
-	iv: 4
 	examen: 2
 	detallado: 2
+	especializado: 1
 	méxico: 2
 	fmi: 2
 	publicar: 1
 	denominado: 1
+	anual: 1
 	enviar: 1
 	consejo: 2
 	organismo: 1
 	llamado: 1
 	avisos: 1
+	información: 2
 	ciento: 1
 	informe: 1
 	finalizar: 1
@@ -38449,8 +38450,8 @@ Contexto:
 	exilio: 1
 	idea: 1
 	democracia: 1
-	ii: 1
 	república: 1
+	española: 1
 	finalmente: 1
 	género: 1
 	fotografía: 1
@@ -41737,14 +41738,6 @@ Contexto:
 	exterior: 1
 	causa: 1
 
-Palabra: dc
-Contexto:
-	washington: 2
-	mayo: 2
-	ntx: 1
-	ap: 1
-	dpa: 1
-
 Palabra: dea
 Contexto:
 	diferencia: 1
@@ -44676,9 +44669,9 @@ Contexto:
 	defender: 1
 	creer: 1
 	idea: 1
-	ii: 1
 	española: 1
 	tener: 1
+	profundidad: 1
 	decir: 1
 	estilo: 1
 	llevar: 2
@@ -44986,8 +44979,8 @@ Contexto:
 	publicar: 1
 	consulta: 1
 	artículo: 1
-	iv: 1
 	examen: 1
+	detallado: 1
 	menor: 1
 	costo: 1
 	financiero: 1
@@ -48004,14 +47997,15 @@ Contexto:
 	auscultación: 1
 	dirigente: 1
 	nacional: 1
+	revelan: 1
 	consulta: 2
 	artículo: 2
-	iv: 2
 	examen: 2
 	especializado: 1
 	sepultará: 1
 	costumbres: 1
 	pre: 1
+	denominado: 1
 	anual: 1
 	economía: 1
 	país: 1
@@ -49068,8 +49062,8 @@ Contexto:
 	olvidar: 1
 	puño: 1
 	hierro: 1
+	capitalino: 1
 	par: 1
-	ii: 1
 	jornada: 1
 	nacional: 1
 	movimiento: 1
@@ -51363,10 +51357,10 @@ Contexto:
 	permanente: 1
 	artículo: 1
 	intocado: 1
+	caso: 1
+	presentar: 1
 	juzgado: 1
 	administrativo: 1
-	ii: 1
-	vi: 1
 	seleccionar: 1
 	simultáneamene: 1
 	caspirante: 1
@@ -52348,7 +52342,7 @@ Contexto:
 
 Palabra: dpa
 Contexto:
-	dc: 1
+	washington: 1
 	mayo: 1
 	ntx: 1
 	ap: 1
@@ -53597,7 +53591,7 @@ Contexto:
 	agencia: 1
 	noticia: 1
 	reuter: 1
-	iv: 1
+	artículo: 1
 	examen: 1
 	detallado: 1
 	anual: 1
@@ -57457,7 +57451,6 @@ Contexto:
 	méxico: 1
 	imperio: 1
 	napoleón: 1
-	iii: 1
 
 Palabra: encabezar
 Contexto:
@@ -57896,10 +57889,10 @@ Contexto:
 	ausencia: 1
 	incluso: 1
 	solicitar: 1
+	plan: 1
 	acción: 1
 	iniciar: 1
 	hoy: 1
-	ii: 1
 	estudiantil: 1
 	universitario: 1
 	escuela: 1
@@ -58464,12 +58457,11 @@ Contexto:
 	material: 1
 	causar: 1
 	ataque: 1
+	moral: 2
 	españa: 2
-	ii: 1
 	república: 1
 	sino: 1
 	momento: 1
-	moral: 1
 	méxico: 1
 	rejano: 1
 	gil: 1
@@ -60588,7 +60580,7 @@ Contexto:
 	maestro: 1
 	ver: 1
 	frente: 1
-	ii: 1
+	hoy: 1
 	encuentro: 1
 	estudiantil: 1
 	universitario: 1
@@ -60945,12 +60937,11 @@ Contexto:
 	franco: 1
 	regreso: 1
 	aquel: 2
-	momento: 2
+	momento: 3
 	ausencia: 1
 	venir: 1
 	gran: 1
 	moral: 1
-	ii: 1
 	república: 1
 	sino: 1
 	enorme: 2
@@ -61160,9 +61151,9 @@ Contexto:
 	ahora: 1
 	vivir: 1
 	méxico: 1
+	creer: 1
 	idea: 1
 	democracia: 1
-	ii: 1
 	tener: 1
 	profundidad: 1
 	hoy: 1
@@ -61293,8 +61284,8 @@ Contexto:
 
 Palabra: especializado
 Contexto:
+	consulta: 1
 	artículo: 1
-	iv: 1
 	examen: 1
 	detallado: 1
 	sepultará: 1
@@ -63380,9 +63371,9 @@ Contexto:
 	solución: 1
 	conflicto: 1
 	unam: 1
+	acción: 1
 	iniciar: 1
 	hoy: 1
-	ii: 1
 	encuentro: 1
 	universitario: 1
 	escuela: 1
@@ -64527,14 +64518,15 @@ Contexto:
 	corazón: 1
 	purísimo: 1
 	maría: 1
+	países: 1
 	revelan: 1
 	consulta: 2
 	artículo: 2
-	iv: 2
 	detallado: 2
 	especializado: 1
 	sepultará: 1
 	costumbres: 1
+	publicar: 1
 	denominado: 1
 	anual: 1
 	economía: 1
@@ -67869,7 +67861,7 @@ Contexto:
 	participar: 1
 	fortalecer: 2
 	acción: 1
-	presentar: 1
+	presentar: 2
 	único: 1
 	instancia: 1
 	ezln: 1
@@ -67881,9 +67873,8 @@ Contexto:
 	arbitraje: 2
 	manifestar: 1
 	trabajador: 1
+	juzgado: 1
 	administrativo: 1
-	ii: 1
-	vi: 1
 	seleccionar: 1
 	simultáneamene: 1
 	caspirante: 1
@@ -68897,10 +68888,10 @@ Contexto:
 
 Palabra: finalizar
 Contexto:
+	consejo: 1
 	fmi: 1
 	consulta: 1
 	artículo: 1
-	iv: 1
 	aviso: 1
 	información: 1
 	público: 1
@@ -70025,10 +70016,10 @@ Contexto:
 	federal: 1
 	mismo: 2
 	sitio: 1
+	organismo: 1
 	llamado: 1
 	consulta: 1
 	artículo: 1
-	iv: 1
 	avisos: 1
 	información: 1
 	pública: 1
@@ -75417,7 +75408,7 @@ Contexto:
 	francamente: 1
 	mínimo: 1
 	mérito: 1
-	república: 1
+	república: 2
 	chile: 1
 	grado: 1
 	cruz: 1
@@ -75490,7 +75481,6 @@ Contexto:
 	venir: 1
 	moral: 1
 	españa: 1
-	ii: 1
 	memoria: 1
 	asesinar: 1
 	vinir: 1
@@ -76398,8 +76388,8 @@ Contexto:
 	activar: 1
 	gasto: 1
 	público: 1
+	librado: 1
 	juez: 2
-	lv: 1
 	penal: 1
 	rafael: 1
 	alvarez: 2
@@ -76794,7 +76784,7 @@ Contexto:
 	mariano: 2
 	gonzález: 1
 	hernández: 2
-	vii: 1
+	comandante: 1
 	región: 1
 	militar: 1
 	josé: 1
@@ -79112,10 +79102,10 @@ Contexto:
 	plan: 1
 	acción: 1
 	iniciar: 1
-	ii: 1
 	encuentro: 1
 	estudiantil: 1
 	universitario: 1
+	escuela: 1
 	aceptar: 2
 	nuevo: 1
 	formato: 1
@@ -79816,7 +79806,7 @@ Contexto:
 	respaldado: 2
 	admirablemente: 1
 	debate: 1
-	tener: 2
+	tener: 3
 	mesa: 1
 	menos: 1
 	cinco: 1
@@ -79887,7 +79877,6 @@ Contexto:
 	saber: 1
 	creer: 1
 	democracia: 1
-	ii: 1
 	república: 1
 	española: 1
 	caído: 1
@@ -80247,45 +80236,6 @@ Contexto:
 	servicio: 1
 	ilegal: 1
 
-Palabra: ii
-Contexto:
-	plan: 1
-	acción: 1
-	iniciar: 1
-	hoy: 1
-	encuentro: 1
-	estudiantil: 1
-	universitario: 1
-	escuela: 1
-	tlatelolco: 1
-	zócalo: 1
-	capitalino: 1
-	par: 1
-	jornada: 1
-	nacional: 1
-	difundir: 1
-	movimiento: 1
-	caso: 1
-	presentar: 1
-	juzgado: 1
-	administrativo: 1
-	vi: 1
-	distrito: 1
-	federal: 1
-	gran: 1
-	momento: 2
-	moral: 1
-	españa: 1
-	república: 2
-	sino: 1
-	enorme: 1
-	creer: 1
-	idea: 1
-	democracia: 1
-	española: 1
-	tener: 1
-	profundidad: 1
-
 Palabra: iif
 Contexto:
 	parte: 1
@@ -80296,13 +80246,6 @@ Contexto:
 	fmi: 1
 	reunión: 1
 	semana: 1
-
-Palabra: iii
-Contexto:
-	méxico: 1
-	imperio: 1
-	encabezado: 1
-	napoleón: 1
 
 Palabra: ilegal
 Contexto:
@@ -80745,7 +80688,6 @@ Contexto:
 	méxico: 1
 	encabezado: 1
 	napoleón: 1
-	iii: 1
 
 Palabra: imperior
 Contexto:
@@ -83626,8 +83568,8 @@ Contexto:
 	cada: 1
 	semana: 1
 	expresar: 1
+	consulta: 2
 	artículo: 2
-	iv: 2
 	forma: 1
 	avisos: 1
 	pública: 1
@@ -84496,9 +84438,9 @@ Contexto:
 	plan: 1
 	acción: 1
 	hoy: 1
-	ii: 1
 	encuentro: 1
 	estudiantil: 1
+	universitario: 1
 	acudir: 1
 	explanada: 1
 	rectoría: 1
@@ -89108,32 +89050,6 @@ Contexto:
 	campaña: 1
 	difusión: 1
 
-Palabra: iv
-Contexto:
-	países: 1
-	revelan: 1
-	consulta: 4
-	artículo: 4
-	examen: 2
-	detallado: 2
-	especializado: 1
-	sepultará: 1
-	publicar: 1
-	denominado: 1
-	anual: 1
-	economía: 1
-	organismo: 1
-	llamado: 1
-	forma: 1
-	avisos: 1
-	información: 2
-	pública: 1
-	consejo: 1
-	fmi: 1
-	finalizar: 1
-	aviso: 1
-	público: 1
-
 Palabra: izquierda
 Contexto:
 	nombre: 1
@@ -89917,10 +89833,10 @@ Contexto:
 	bmv: 1
 	operador: 1
 	intercambiar: 1
+	tlatelolco: 1
 	zócalo: 1
 	capitalino: 1
 	par: 1
-	ii: 1
 	nacional: 1
 	difundir: 1
 	movimiento: 1
@@ -90046,8 +89962,8 @@ Contexto:
 	justicia: 1
 	burguete: 1
 	lara: 1
+	león: 1
 	comandante: 1
-	vii: 1
 	región: 1
 	militar: 1
 	gómez: 1
@@ -90513,15 +90429,14 @@ Contexto:
 	cumplimiento: 1
 	aprehensión: 1
 	librado: 1
-	lv: 1
 	penal: 1
 	rafael: 1
 	guerra: 2
+	alvarez: 2
 	núñez: 1
 	informar: 1
 	hora: 1
 	propio: 2
-	alvarez: 1
 	declarar: 1
 	formalmente: 1
 	agregar: 1
@@ -91262,9 +91177,8 @@ Contexto:
 	caso: 1
 	presentar: 1
 	administrativo: 1
-	ii: 1
-	vi: 1
 	distrito: 1
+	federal: 1
 	estudiante: 1
 	marzo: 1
 	cardiología: 1
@@ -93679,9 +93593,9 @@ Contexto:
 	noé: 1
 	castañón: 1
 	comandante: 1
-	vii: 1
 	región: 1
 	militar: 1
+	josé: 1
 	subsecretario: 1
 	explicar: 1
 	contar: 1
@@ -93866,9 +93780,9 @@ Contexto:
 	orden: 2
 	aprehensión: 2
 	juez: 1
-	lv: 1
 	penal: 1
 	rafael: 1
+	guerra: 1
 	consignación: 1
 	hecho: 1
 	ministerio: 1
@@ -94560,8 +94474,8 @@ Contexto:
 	organismo: 1
 	consulta: 1
 	artículo: 1
-	iv: 1
 	forma: 1
+	avisos: 1
 	diálogo: 1
 	señalar: 1
 	motivo: 1
@@ -96308,17 +96222,6 @@ Contexto:
 	centro: 1
 	instituto: 1
 	politécnico: 1
-
-Palabra: lv
-Contexto:
-	orden: 1
-	aprehensión: 1
-	librado: 1
-	juez: 1
-	penal: 1
-	rafael: 1
-	guerra: 1
-	alvarez: 1
 
 Palabra: lx
 Contexto:
@@ -99643,7 +99546,6 @@ Contexto:
 	encuesta: 1
 	madrid: 1
 	washington: 4
-	dc: 2
 	ntx: 1
 	ap: 2
 	dpa: 1
@@ -104327,9 +104229,9 @@ Contexto:
 	democrático: 1
 	mejor: 1
 	exponente: 1
+	castañón: 1
 	león: 1
 	comandante: 1
-	vii: 1
 	región: 1
 	josé: 1
 	gómez: 1
@@ -106148,8 +106050,8 @@ Contexto:
 	ver: 1
 	venir: 1
 	moral: 1
-	ii: 1
 	república: 1
+	sino: 1
 	itinerario: 1
 	azar: 1
 	fotografiar: 1
@@ -106645,9 +106547,9 @@ Contexto:
 	gran: 1
 	momento: 1
 	españa: 1
-	ii: 1
 	república: 1
 	sino: 1
+	enorme: 1
 	derrota: 1
 	fe: 1
 	ruina: 1
@@ -107139,7 +107041,7 @@ Contexto:
 	alza: 1
 	cuota: 1
 	extendar: 1
-	ii: 1
+	par: 1
 	jornada: 1
 	difundir: 1
 	institución: 1
@@ -108675,7 +108577,6 @@ Contexto:
 	imperio: 1
 	encabezado: 1
 	napoleón: 1
-	iii: 1
 	inmigrante: 1
 	celebrar: 1
 	duradero: 1
@@ -109307,9 +109208,9 @@ Contexto:
 	geografía: 1
 	alza: 1
 	extendar: 1
+	zócalo: 1
 	capitalino: 1
 	par: 1
-	ii: 1
 	jornada: 1
 	difundir: 1
 	educativo: 2
@@ -109741,7 +109642,6 @@ Contexto:
 	méxico: 1
 	imperio: 1
 	encabezado: 1
-	iii: 1
 
 Palabra: narco
 Contexto:
@@ -112173,12 +112073,11 @@ Contexto:
 	castañón: 1
 	león: 1
 	comandante: 1
-	vii: 1
+	región: 1
 
 Palabra: ntx
 Contexto:
 	washington: 1
-	dc: 1
 	mayo: 1
 	ap: 1
 	dpa: 1
@@ -115641,7 +115540,7 @@ Contexto:
 	cumplimiento: 1
 	aprehensión: 2
 	librado: 2
-	lv: 1
+	penal: 1
 	hecho: 1
 	ministerio: 1
 	público: 1
@@ -115834,7 +115733,7 @@ Contexto:
 	llamado: 1
 	consulta: 1
 	artículo: 1
-	iv: 1
+	forma: 1
 	sumado: 1
 	impulso: 1
 	último: 1
@@ -117785,10 +117684,10 @@ Contexto:
 	tlatelolco: 1
 	zócalo: 1
 	capitalino: 1
-	ii: 1
 	jornada: 1
 	nacional: 1
 	difundir: 1
+	movimiento: 1
 
 Palabra: parabrisa
 Contexto:
@@ -121033,7 +120932,7 @@ Contexto:
 	revelan: 1
 	consulta: 1
 	artículo: 1
-	iv: 1
+	examen: 1
 	fracaso: 1
 	emergentes: 1
 	sostener: 1
@@ -121438,10 +121337,10 @@ Contexto:
 	controlar: 1
 	mencionar: 1
 	primero: 1
+	orden: 1
 	aprehensión: 1
 	librado: 1
 	juez: 1
-	lv: 1
 	rafael: 1
 	guerra: 1
 	alvarez: 1
@@ -124191,7 +124090,7 @@ Contexto:
 	acción: 1
 	iniciar: 1
 	hoy: 1
-	ii: 1
+	encuentro: 1
 	nominación: 1
 	presidencial: 1
 	partido: 1
@@ -129592,7 +129491,7 @@ Contexto:
 	ninguno: 4
 	justificación: 1
 	evitar: 1
-	federal: 1
+	federal: 2
 	participar: 1
 	fortalecer: 1
 	acción: 1
@@ -129627,8 +129526,7 @@ Contexto:
 	caso: 1
 	juzgado: 1
 	administrativo: 1
-	ii: 1
-	vi: 1
+	distrito: 1
 	informe: 1
 	financiero: 1
 	operación: 1
@@ -133479,7 +133377,7 @@ Contexto:
 
 Palabra: profundidad
 Contexto:
-	ii: 1
+	democracia: 1
 	república: 1
 	española: 1
 	tener: 1
@@ -136020,7 +135918,7 @@ Contexto:
 	denominado: 1
 	consulta: 1
 	artículo: 1
-	iv: 1
+	examen: 1
 	tendencia: 1
 	creciente: 1
 	nación: 1
@@ -137037,7 +136935,7 @@ Contexto:
 	conducta: 1
 	muchacho: 1
 	reciente: 1
-	iv: 1
+	artículo: 1
 	forma: 1
 	avisos: 1
 	información: 1
@@ -137249,7 +137147,7 @@ Contexto:
 	interesado: 2
 	decir: 1
 	economista: 1
-	iv: 1
+	artículo: 1
 	finalizar: 1
 	aviso: 1
 	información: 1
@@ -138220,9 +138118,9 @@ Contexto:
 	gonzález: 1
 	recordar: 1
 	inclusive: 1
+	aprehensión: 1
 	librado: 1
 	juez: 1
-	lv: 1
 	penal: 1
 	guerra: 1
 	alvarez: 1
@@ -141994,10 +141892,10 @@ Contexto:
 	soconusco: 2
 	sierra: 2
 	frontera: 1
+	noé: 1
 	castañón: 1
 	león: 1
 	comandante: 1
-	vii: 1
 	militar: 1
 	josé: 1
 	gómez: 1
@@ -143678,7 +143576,7 @@ Contexto:
 	mérito: 1
 	chile: 1
 	grado: 1
-	gran: 1
+	gran: 2
 	cruz: 1
 	procuraduría: 2
 	general: 2
@@ -143752,7 +143650,6 @@ Contexto:
 	momento: 2
 	moral: 2
 	españa: 1
-	ii: 2
 	sino: 1
 	enorme: 1
 	crear: 1
@@ -145601,8 +145498,8 @@ Contexto:
 	países: 1
 	consulta: 1
 	artículo: 1
-	iv: 1
 	examen: 1
+	detallado: 1
 
 Palabra: revelar
 Contexto:
@@ -151120,7 +151017,7 @@ Contexto:
 
 Palabra: sepultará
 Contexto:
-	iv: 1
+	artículo: 1
 	examen: 1
 	detallado: 1
 	especializado: 1
@@ -153776,12 +153673,11 @@ Contexto:
 	comisión: 1
 	nacional: 1
 	salarios: 1
+	momento: 2
 	moral: 2
 	españa: 1
-	ii: 1
 	república: 1
 	enorme: 1
-	momento: 1
 	méxico: 1
 	notar: 1
 	identificar: 1
@@ -159750,7 +159646,7 @@ Contexto:
 	mesa: 1
 	menos: 1
 	cinco: 2
-	idea: 2
+	idea: 3
 	pormenor: 1
 	fijar: 1
 	negociador: 1
@@ -160395,7 +160291,6 @@ Contexto:
 	variado: 1
 	interpretación: 1
 	mezclar: 1
-	ii: 1
 	república: 1
 	española: 1
 	profundidad: 1
@@ -161695,7 +161590,7 @@ Contexto:
 	zócalo: 1
 	capitalino: 1
 	par: 1
-	ii: 1
+	jornada: 1
 	habitacional: 1
 	tal: 1
 	forma: 1
@@ -165940,8 +165835,8 @@ Contexto:
 	museo: 1
 	parque: 1
 	iglesia: 1
+	iniciar: 1
 	hoy: 1
-	ii: 1
 	encuentro: 1
 	estudiantil: 1
 	escuela: 1
@@ -168782,15 +168677,6 @@ Contexto:
 	hospital: 1
 	imss: 1
 
-Palabra: vi
-Contexto:
-	presentar: 1
-	juzgado: 1
-	administrativo: 1
-	ii: 1
-	distrito: 1
-	federal: 1
-
 Palabra: viabilidad
 Contexto:
 	susceptible: 1
@@ -169326,17 +169212,6 @@ Contexto:
 	custodiado: 1
 	efectivo: 1
 	policiaco: 1
-
-Palabra: vii
-Contexto:
-	noé: 1
-	castañón: 1
-	león: 1
-	comandante: 1
-	región: 1
-	militar: 1
-	josé: 1
-	gómez: 1
 
 Palabra: viktor
 Contexto:
@@ -170891,10 +170766,10 @@ Contexto:
 	presencia: 1
 	onu: 1
 	fuerza: 1
-	dc: 2
 	mayo: 4
 	ntx: 1
 	ap: 1
+	dpa: 1
 	fmi: 1
 	reunión: 1
 	pasado: 1
@@ -171888,8 +171763,8 @@ Contexto:
 	tlatelolco: 1
 	capitalino: 1
 	par: 1
-	ii: 1
 	jornada: 1
+	nacional: 1
 
 Palabra: ámbito
 Contexto:
