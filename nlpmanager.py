@@ -8,8 +8,8 @@ class WordProperties:
         self.frequency_vector = []
         self.contexts = []
         self.length = 0
-        self.entropy = 1
         self.sentence_count = 0
+        self.sentence_crossings = {}
         for word in context_counts.keys():
             self.context_bag.add(word)
             self.context_counts.append((word, context_counts[word]))
@@ -35,6 +35,7 @@ class DocProperties:
         self.sentences = normalized_sentences
         self.word_frequencies = word_frequencies
         self.token_index = {}
+        self.contexts = []
         for i, token in enumerate(unique_tokens):
             self.token_index[token] = i
 
@@ -43,4 +44,10 @@ class DocProperties:
     
     def get_sentence_count(self):
         return len(self.sentences)
+    
+    def set_contexts(self, contexts):
+        self.contexts = contexts
+
+    def index_of(self, token):
+        return self.token_index.get(token, -1)
         

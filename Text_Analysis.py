@@ -1,4 +1,4 @@
-#Módulo que genera los vectores de similitud de las palabras en un corpus de texto. Crea el archivo term_document_data.pkl con los vectores de similitud de las palabras en el corpus.
+#Módulo que genera los vectores de similitud de las palabras en un corpus de texto.
 
 import math
 import nltk
@@ -12,7 +12,7 @@ import nlpmanager
 import picklejar
 
 #Re-analyse text?
-process_text = True
+process_text = False
 
 #Config.
 OUTPUT_DIR = "NLP_Output/"
@@ -104,6 +104,8 @@ def idf_bm25(b=0.75, k=1.2):
         bm25_list.append(vector)
     return bm25_list
 
+def log(num):
+    return 0 if num == 0 else math.log(num, 2)
 
 #Inicio del Programa
 
@@ -133,6 +135,9 @@ if process_text:
                         word_context[sentence[i]] = (word_context.get(sentence[i], 0) + 1)
         context_objs.append(nlpmanager.WordProperties(word, word_context, corpus_frequency=doc_normalized.word_frequencies[word]))
         context.append(word_context)
+    doc_normalized.set_contexts(context)
+    output.save_pickle("doc_normalized.pkl", doc_normalized)
+    output.save_pickle("context_objs.pkl", context_objs)
 
     #Guardar frecuencias en un archivo
     with open(OUTPUT_DIR + "frecuencias.txt", 'w', encoding='utf-8') as file:
@@ -150,44 +155,84 @@ if process_text:
                 file.write("\t%s: %d\n" % (str(value), context[i][value]))
             file.write("\n")
         file.write("\n")
+else:
+    doc_normalized = output.load_pickle("doc_normalized.pkl")
+    context_objs = output.load_pickle("context_objs.pkl")
+    context = doc_normalized.contexts
 
 #Generar vectores de contexto con Raw frequency
-freq_raw = []
-for i in range(len(doc_normalized.unique_tokens)):
-    vector = []
-    for j in range(len(context)):
-        vector.append(context[j].get(doc_normalized.unique_tokens[i], 0))
-    freq_raw.append(vector)
-    context_objs[i].setFrequencyVector(vector)
-output.save_pickle("term_frequency_raw.pkl", apply_PCA(freq_raw))
+#freq_raw = []
+#for i in range(len(doc_normalized.unique_tokens)):
+#    vector = []
+#    for j in range(len(context)):
+#        vector.append(context[j].get(doc_normalized.unique_tokens[i], 0))
+#    freq_raw.append(vector)
+#    context_objs[i].setFrequencyVector(vector)
+#output.save_pickle("term_frequency_raw.pkl", apply_PCA(freq_raw))
+#
+##Generar vectores de contexto con Frecuencia relativa
+#freq_relative = []
+#for i in range(len(doc_normalized.unique_tokens)):
+#    vector = []
+#    for j in range(len(context)):
+#        vector.append(0 if len(context[j]) == 0 else (context[j].get(doc_normalized.unique_tokens[i], 0)/len(context[j])))
+#    freq_relative.append(vector)
+#output.save_pickle("term_frequency_relative.pkl", apply_PCA(freq_relative))
+#
+##Generar vectores de contexto con TF Sublineal
+#freq_sublin = []
+#for i in range(len(doc_normalized.unique_tokens)):
+#    vector = []
+#    for j in range(len(context)):
+#        vector.append(math.log(1 + context[j].get(doc_normalized.unique_tokens[i], 0), 2))
+#    freq_sublin.append(vector)
+#output.save_pickle("term_frequency_sublin.pkl", apply_PCA(freq_sublin))
+#freq_idf_bm25 = idf_bm25()
+#output.save_pickle("term_frequency_idfbm25.pkl", apply_PCA(freq_idf_bm25))
+#
+##Generar entropías 
+for sentence in doc_normalized.sentences:
+    sentence_word_set = set(sentence)
+    for word in sentence_word_set:
+        word_properties = context_objs[doc_normalized.index_of(word)]
+        word_properties.addSentenceCount()
+        for other_word in sentence_word_set:
+            word_properties.sentence_crossings[other_word] = word_properties.sentence_crossings.get(other_word, 0) + 1
+cond_entropies = []
+mutual_infos = []
+for word_1 in context_objs:
+    prob_w1 = (word_1.sentence_count/doc_normalized.get_sentence_count())
+    word_cond_entropies = []
+    word_mutual_infos = []
+    for word_2 in context_objs:
+        prob_w2 = (word_2.sentence_count/doc_normalized.get_sentence_count())
+        
+        #probabilidades conjuntas:
+        count_both = word_1.sentence_crossings.get(word_2.word, 0)
+        count_just_w1 = (word_1.sentence_count - count_both)
+        count_just_w2 = (word_2.sentence_count - count_both)
+        count_none = (doc_normalized.get_sentence_count() - count_both - count_just_w1 - count_just_w2)
 
-#Generar vectores de contexto con Frecuencia relativa
-freq_relative = []
-for i in range(len(doc_normalized.unique_tokens)):
-    vector = []
-    for j in range(len(context)):
-        vector.append(0 if len(context[j]) == 0 else (context[j].get(doc_normalized.unique_tokens[i], 0)/len(context[j])))
-    freq_relative.append(vector)
-output.save_pickle("term_frequency_relative.pkl", apply_PCA(freq_relative))
+        both = count_both / doc_normalized.get_sentence_count()
+        just_w1 = count_just_w1 / doc_normalized.get_sentence_count()
+        just_w2 = count_just_w2 / doc_normalized.get_sentence_count()
+        none = count_none / doc_normalized.get_sentence_count()
 
-#Generar vectores de contexto con TF Sublineal
-freq_sublin = []
-for i in range(len(doc_normalized.unique_tokens)):
-    vector = []
-    for j in range(len(context)):
-        vector.append(math.log(1 + context[j].get(doc_normalized.unique_tokens[i], 0), 2))
-    freq_sublin.append(vector)
-output.save_pickle("term_frequency_sublin.pkl", apply_PCA(freq_sublin))
-freq_idf_bm25 = idf_bm25()
-output.save_pickle("term_frequency_idfbm25.pkl", apply_PCA(freq_idf_bm25))
+        cond_entropy = ((prob_w2) * (-(both/prob_w2) * log(both/prob_w2))) 
+        + ((prob_w2) * (-(just_w2/prob_w2) * log(just_w2/prob_w2))) 
+        + ((1 - prob_w2) * (-(none/(1 - prob_w2)) * log(none/(1 - prob_w2)))) 
+        + ((1 - prob_w2) * (-(just_w1/(1 - prob_w2)) * log(just_w1/(1 - prob_w2))))
+        word_cond_entropies.append(cond_entropy)
 
-#Generar entropías 
-#for sentence in doc_normalized_sentences:
-#    sentence_set = set(sentence)
-#    for word in sentence_set:
-#        for word_context in context_objs:
-#            if word == word_context.word:
-#                word_context.addSentenceCount()
-#                break
+        mutual_info = (0 if (both/(prob_w1 * prob_w2)) == 0 else both * math.log(both/(prob_w1 * prob_w2), 2)) 
+        + (0 if (just_w1/(prob_w1 * (1 - prob_w2))) == 0 else just_w1 * math.log(just_w1/(prob_w1 * (1 - prob_w2)), 2))
+        + (0 if (just_w2/((1 - prob_w1) * prob_w2)) == 0 else just_w2 * math.log(just_w2/((1 - prob_w1) * prob_w2), 2)) 
+        + (0 if (none/((1 - prob_w1) * (1 - prob_w2))) == 0 else none * math.log(none/((1 - prob_w1) * (1 - prob_w2)), 2))
+        word_mutual_infos.append(mutual_info) 
+
+    cond_entropies.append(word_cond_entropies)
+    mutual_infos.append(word_mutual_infos)
+output.save_pickle("term_conditional_entropy.pkl", cond_entropies)
+output.save_pickle("term_mutual_info.pkl", mutual_infos)
 
 print("Análisis terminado con éxito.")

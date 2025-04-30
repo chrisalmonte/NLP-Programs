@@ -1,16 +1,14 @@
 #Módulo que compara los vectores de las palabras, una vez que se han generado con el módulo Vectores_Frecuencia.py
 
-import pickle
 import numpy as np
 
-OUTPUT_DIR = "NLP_Output/"
+#Módulos propios
+import picklejar
 
-#Función para cargar un archivo de pickle
-def open_data(path:str):
-    data = None
-    with open(path, 'rb') as file:
-        data = pickle.load(file)
-    return data
+#Palabra a comparar
+WORD = "problema"
+#Donde se guardaron los pickles del análisis de texto
+OUTPUT_DIR = "NLP_Output/"
 
 #Función que regresa el ángulo coseno entre dos vectores de palabra
 def angle_between_vectors(vector1, vector2,):
@@ -27,41 +25,44 @@ def simmilarity_values(word: str, vector_dictionary: dict):
         similitud.append((token, angle_between_vectors(vector_dictionary[word], vector_dictionary[token])))
     return sorted(similitud, key=lambda x: x[1], reverse=True)
 
-def write_comparison(file_name: str, header:str, **kwargs):
+def write_dict_columns(file_name: str, header:str, **kwargs):
     with open(OUTPUT_DIR + file_name, 'w', encoding="utf-8") as file:
         file.write("%s\n\n" % header)
         for key in kwargs.keys():
             file.write(str(key).ljust(27) + "| ")
         file.write("\n\n")
         for i in range(len(list(kwargs.values())[0])):
-            for word_data  in kwargs.values():
-                file.write(str(word_data[i][0]).ljust(20) + ": " + "{:.3f}".format(word_data[i][1]).ljust(5) + "| ")
+            for value  in kwargs.values():
+                file.write(str(value[i][0]).ljust(20) + ": " + "{:.3f}".format(value[i][1]).ljust(5) + "| ")
             file.write("\n")
 
-def order_entropy_values(word: str, vector_dictionary: dict):
-    if word not in vector_dictionary.keys():
-        raise ValueError("No se encontró \"%s\" en los vectores" % word)
-    return sorted(vector_dictionary[word], key=lambda x: x[1])
+def order_entropy_values(word: str, vectors: list, descending: bool = False):
+    pairs = []
+    vector = vectors[doc_normalized.index_of(word)]
+    for i, value in enumerate(vector):
+        pairs.append((doc_normalized.unique_tokens[i], value))
+    return sorted(pairs, key=lambda x: x[1], reverse=descending)
 
-def order_mutual_info(word: str, vector_dictionary: dict):
-    if word not in vector_dictionary.keys():
-        raise ValueError("No se encontró \"%s\" en los vectores" % word)
-    vec = vector_dictionary[word]
-    vec = sorted(vec, key=lambda x: x[1])         
 
-word = "anunciar"
-vecs_fraw = open_data(OUTPUT_DIR + "term_frequency_raw.pkl")
-vecs_frel = open_data(OUTPUT_DIR + "term_frequency_relative.pkl")
-vecs_fsub = open_data(OUTPUT_DIR + "term_frequency_sublin.pkl")
-vecs_idfbm25 = open_data(OUTPUT_DIR + "term_frequency_idfbm25.pkl")
-vecs_entropy = open_data(OUTPUT_DIR + "term_conditional_entropy.pkl")
-#vecs_mutual_info = open_data(OUTPUT_DIR + "term_mutual_info.pkl")
-sim_word_raw = simmilarity_values(word, vecs_fraw)
-sim_word_rel = simmilarity_values(word, vecs_frel)
-sim_word_sub = simmilarity_values(word, vecs_fsub)
-sim_word_idfbm25 = simmilarity_values(word, vecs_idfbm25)
-cond_entropy = order_entropy_values(word, vecs_entropy)
+#Programa
+#Cargar los vectores
+output = picklejar.Jar(OUTPUT_DIR)
+vecs_fraw = output.load_pickle("term_frequency_raw.pkl")
+vecs_frel = output.load_pickle("term_frequency_relative.pkl")
+vecs_fsub = output.load_pickle("term_frequency_sublin.pkl")
+vecs_idfbm25 = output.load_pickle("term_frequency_idfbm25.pkl")
+vecs_entropy = output.load_pickle("term_conditional_entropy.pkl")
+vecs_mutual_info = output.load_pickle("term_mutual_info.pkl")
+doc_normalized = output.load_pickle("doc_normalized.pkl")
 
-write_comparison("comparacion_4_%s.txt" % word, "Similitud de la palabra \"%s\"" % word, Raw_Frequency=sim_word_raw, 
-                 Relative_Frequency=sim_word_rel, Sublineal=sim_word_sub, IDF_BM25=sim_word_idfbm25,
-                 Entropia_Condicional=cond_entropy)
+#sim_word_raw = simmilarity_values(WORD, vecs_fraw)
+#sim_word_rel = simmilarity_values(WORD, vecs_frel)
+#sim_word_sub = simmilarity_values(WORD, vecs_fsub)
+#sim_word_idfbm25 = simmilarity_values(WORD, vecs_idfbm25)
+#write_dict_columns("similitud_%s.txt" % WORD, "Similitud de la palabra \"%s\"" % WORD, Raw_Frequency=sim_word_raw, 
+#                 Relative_Frequency=sim_word_rel, Sublineal=sim_word_sub, IDF_BM25=sim_word_idfbm25)
+
+cond_entropy = order_entropy_values(WORD, vecs_entropy)
+mutual_info = order_entropy_values(WORD, vecs_mutual_info, descending=True)
+write_dict_columns("entropia_%s.txt" % WORD, "Valores de entropía de la palabra \"%s\"" % WORD, Conditional_Entropy=cond_entropy,
+                 Mutual_Information=mutual_info)
