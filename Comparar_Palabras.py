@@ -37,16 +37,31 @@ def write_comparison(file_name: str, header:str, **kwargs):
             for word_data  in kwargs.values():
                 file.write(str(word_data[i][0]).ljust(20) + ": " + "{:.3f}".format(word_data[i][1]).ljust(5) + "| ")
             file.write("\n")
-            
 
-word = "maquinaria"
+def order_entropy_values(word: str, vector_dictionary: dict):
+    if word not in vector_dictionary.keys():
+        raise ValueError("No se encontró \"%s\" en los vectores" % word)
+    return sorted(vector_dictionary[word], key=lambda x: x[1])
+
+def order_mutual_info(word: str, vector_dictionary: dict):
+    if word not in vector_dictionary.keys():
+        raise ValueError("No se encontró \"%s\" en los vectores" % word)
+    vec = vector_dictionary[word]
+    vec = sorted(vec, key=lambda x: x[1])         
+
+word = "anunciar"
 vecs_fraw = open_data(OUTPUT_DIR + "term_frequency_raw.pkl")
 vecs_frel = open_data(OUTPUT_DIR + "term_frequency_relative.pkl")
 vecs_fsub = open_data(OUTPUT_DIR + "term_frequency_sublin.pkl")
 vecs_idfbm25 = open_data(OUTPUT_DIR + "term_frequency_idfbm25.pkl")
+vecs_entropy = open_data(OUTPUT_DIR + "term_conditional_entropy.pkl")
+#vecs_mutual_info = open_data(OUTPUT_DIR + "term_mutual_info.pkl")
 sim_word_raw = simmilarity_values(word, vecs_fraw)
 sim_word_rel = simmilarity_values(word, vecs_frel)
 sim_word_sub = simmilarity_values(word, vecs_fsub)
 sim_word_idfbm25 = simmilarity_values(word, vecs_idfbm25)
+cond_entropy = order_entropy_values(word, vecs_entropy)
 
-write_comparison("comparacion_%s.txt" % word, "Similitud de la palabra \"%s\"" % word, Raw_Frequency=sim_word_raw, Relative_Frequency=sim_word_rel, Sublineal=sim_word_sub, IDF_BM25=sim_word_idfbm25)
+write_comparison("comparacion_4_%s.txt" % word, "Similitud de la palabra \"%s\"" % word, Raw_Frequency=sim_word_raw, 
+                 Relative_Frequency=sim_word_rel, Sublineal=sim_word_sub, IDF_BM25=sim_word_idfbm25,
+                 Entropia_Condicional=cond_entropy)

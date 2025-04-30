@@ -1,0 +1,3 @@
+__pycache__/
+.vscode/
+NLP_Output/*.pkl
