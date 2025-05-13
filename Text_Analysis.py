@@ -218,12 +218,16 @@ for word_1 in context_objs:
         just_w2 = count_just_w2 / doc_normalized.get_sentence_count()
         none = count_none / doc_normalized.get_sentence_count()
 
-        cond_entropy = ((prob_w2) * (-(both/prob_w2) * log(both/prob_w2))) 
-        + ((prob_w2) * (-(just_w2/prob_w2) * log(just_w2/prob_w2))) 
-        + ((1 - prob_w2) * (-(none/(1 - prob_w2)) * log(none/(1 - prob_w2)))) 
-        + ((1 - prob_w2) * (-(just_w1/(1 - prob_w2)) * log(just_w1/(1 - prob_w2))))
+        #Entropía condicional
+        term_1 = ((prob_w2) * (-(both/prob_w2) * log(both/prob_w2)))
+        term_2 = ((prob_w2) * (-(just_w2/prob_w2) * log(just_w2/prob_w2)))
+        term_3 = ((1 - prob_w2) * (-(none/(1 - prob_w2)) * log(none/(1 - prob_w2))))
+        term_4 = ((1 - prob_w2) * (-(just_w1/(1 - prob_w2)) * log(just_w1/(1 - prob_w2))))
+
+        cond_entropy =  math.fsum([term_1, term_2, term_3, term_4])
         word_cond_entropies.append(cond_entropy)
 
+        #Información mutua
         mutual_info = (0 if (both/(prob_w1 * prob_w2)) == 0 else both * math.log(both/(prob_w1 * prob_w2), 2)) 
         + (0 if (just_w1/(prob_w1 * (1 - prob_w2))) == 0 else just_w1 * math.log(just_w1/(prob_w1 * (1 - prob_w2)), 2))
         + (0 if (just_w2/((1 - prob_w1) * prob_w2)) == 0 else just_w2 * math.log(just_w2/((1 - prob_w1) * prob_w2), 2)) 
