@@ -15,11 +15,29 @@ class Jar:
             self.path = path
 
     #Función para guardar texto en un archivo
-    def save_text(self, content, filename: str, description: str = ""):
+    def save_text(self, content, filename: str, description: str = "", file_encoding: str = "utf-8"):
         path = self.path + filename
-        with open(path, 'w', encoding='utf-8') as file:
+        with open(path, 'w', encoding=file_encoding) as file:
             file.write("%s\n\n" % description)
             file.write(content)
+            file.write("\n")
+
+    #Función para guardar un diccionario en un archivo de texto
+    def save_dict_2_txt(self, filename, dictionary: dict, description: str = "", file_encoding: str = "utf-8"):
+        path = self.path + filename
+        with open(path, 'w', encoding=file_encoding) as file:
+            file.write(description + "\n\n")
+            for value in dictionary:
+                file.write("%s: %d\n" % (str(value), dictionary[value]))
+                file.write("\n")
+    
+    def save_list_2_txt(self, filename, list: list, description: str = "", file_encoding: str = "utf-8", separator: str = '\n'):
+        path = self.path + filename
+        with open(path, 'w', encoding=file_encoding) as file:
+            file.write(description + "\n\n")
+            for value in list:
+                file.write(str(value))
+                file.write(separator)
             file.write("\n")
 
     #Función para cargar un pickle
@@ -35,3 +53,5 @@ class Jar:
         path = self.path + pickle_filename
         with open(path, "wb") as file:
             pickle.dump(data, file)
+
+    
