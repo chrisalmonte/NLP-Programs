@@ -1,0 +1,73 @@
+import nltk
+import os
+import re
+import sklearn
+import stanza
+
+# modules
+import picklejar
+import textNormalization
+
+#Config.
+OUTPUT_DIR = "SA-Output/"
+CORPUS_DIR = "C:/Users/emith/Downloads/corpusCriticasCine/"
+TRAINING_SAMPLE_RATIO = 0.8
+STOPWORD_LIST = nltk.corpus.stopwords.words("spanish")
+#Eliminar stopwords de la lista
+STOPWORD_LIST.remove("estado")
+STOPWORD_LIST.extend(["ser", "hacer", "haber"])
+SKIP_TEXT_NORMALIZATION = False 
+#nlp = stanza.Pipeline(lang="es", processors='tokenize, lemma, mwt, pos') if not SKIP_TEXT_NORMALIZATION else None
+
+output = picklejar.Jar(OUTPUT_DIR)
+
+if SKIP_TEXT_NORMALIZATION:
+    print("Skipping text normalization.")
+else:
+    sample_size = 3
+    tags = []
+    documents = []
+    unique_tokens = set()
+    for i in range(3, 6):
+        if not os.path.exists("%s%d.xml" % (CORPUS_DIR, i)) or not os.path.exists("%s%d.review.pos" % (CORPUS_DIR, i)): 
+            continue
+        tag = None
+        doc = []
+        with open("%s%d.xml" % (CORPUS_DIR, i), 'r', encoding="ANSI") as file:
+            content = file.read()
+            tag = re.search(r"rank=\"(\d)\"", content)
+        with open("%s%d.review.pos" % (CORPUS_DIR, i), 'r', encoding="ANSI", newline='') as file:
+            for line in file:
+                line = line.rstrip()
+                word_info = line.split()
+                if not word_info or len(word_info) < 4:
+                    continue
+                if not word_info[1].isalpha() or len(word_info[1]) < 2:
+                    continue
+                if word_info[1] in STOPWORD_LIST:
+                    continue
+                doc.append(word_info[1])
+                unique_tokens.add(word_info[1])        
+        if not tag or not doc:
+            continue
+        tags.append(int(tag.group(1)))
+        documents.append(doc)
+print("Vocabulary Length:", len(unique_tokens))
+print("Sample Size:", len(documents))
+print("Size of y:", len(tags))
+#Frequencies:
+token_raw_freq = []
+unique_tokens = sorted(unique_tokens)
+print("unique_tokens:", unique_tokens)
+for doc in documents:
+    freq = 0
+    raw_freq = []
+    for token in unique_tokens:
+        raw_freq.append(sum(1 if token == word else 0 for word in doc))
+    token_raw_freq.append(raw_freq)
+
+for i,doc in enumerate(documents):
+    print("doc: ", doc)
+    print(token_raw_freq[i])
+
+
