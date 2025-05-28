@@ -1,7 +1,13 @@
 import nltk
 import os
 import re
-import sklearn
+from sklearn.decomposition import PCA
+from sklearn.linear_model import SGDClassifier
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
 import stanza
 
 # modules
@@ -11,24 +17,28 @@ import textNormalization
 #Config.
 OUTPUT_DIR = "SA-Output/"
 CORPUS_DIR = "C:/Users/emith/Downloads/corpusCriticasCine/"
-TRAINING_SAMPLE_RATIO = 0.8
+SENTIMENT_DIC_DIR = "../../Corpora/Sentiment_dictionaries-Diccionarios_de_sentimientos/"
+TEST_SAMPLE_RATIO = 0.8
 STOPWORD_LIST = nltk.corpus.stopwords.words("spanish")
 #Eliminar stopwords de la lista
 STOPWORD_LIST.remove("estado")
 STOPWORD_LIST.extend(["ser", "hacer", "haber"])
-SKIP_TEXT_NORMALIZATION = False 
-#nlp = stanza.Pipeline(lang="es", processors='tokenize, lemma, mwt, pos') if not SKIP_TEXT_NORMALIZATION else None
+SKIP_TEXT_NORMALIZATION = True
+nlp = stanza.Pipeline(lang="es", processors='tokenize, lemma, mwt, pos') if not SKIP_TEXT_NORMALIZATION else None
 
 output = picklejar.Jar(OUTPUT_DIR)
 
 if SKIP_TEXT_NORMALIZATION:
-    print("Skipping text normalization.")
+    documents = output.load_pickle("documents.pkl")
+    tags = output.load_pickle("tags.pkl")
+    unique_tokens = output.load_pickle("unique_tokens.pkl")
 else:
-    sample_size = 3
+    sample_size = 4381
     tags = []
     documents = []
     unique_tokens = set()
-    for i in range(3, 6):
+    for i in range(1, sample_size + 1):
+        print("Processing Document %d" % i)
         if not os.path.exists("%s%d.xml" % (CORPUS_DIR, i)) or not os.path.exists("%s%d.review.pos" % (CORPUS_DIR, i)): 
             continue
         tag = None
@@ -36,6 +46,25 @@ else:
         with open("%s%d.xml" % (CORPUS_DIR, i), 'r', encoding="ANSI") as file:
             content = file.read()
             tag = re.search(r"rank=\"(\d)\"", content)
+            #doc = re.search(r"<body>(.*)</body>", content, re.DOTALL)
+        #if not tag or not doc:
+        #    continue
+        #doc = nlp(doc.group(1))
+        #normalized_doc = []
+        #for sentence in doc.sentences:
+        #    tokens = [word.lemma for word in sentence.words]
+        #    for token in tokens:
+        #        token = re.sub(r"-", "", token)
+        #        if not token.isalpha():
+        #            continue
+        #        token = token.lower()
+        #        token = re.sub(r"[\W\d_\s]", "", token)
+        #        if re.match(r"^\s$", token) or len(token) < 2:
+        #            continue            
+        #        if token in STOPWORD_LIST:
+        #            continue
+        #        normalized_doc.append(token)
+        #        unique_tokens.add(token)   
         with open("%s%d.review.pos" % (CORPUS_DIR, i), 'r', encoding="ANSI", newline='') as file:
             for line in file:
                 line = line.rstrip()
@@ -47,27 +76,47 @@ else:
                 if word_info[1] in STOPWORD_LIST:
                     continue
                 doc.append(word_info[1])
-                unique_tokens.add(word_info[1])        
+                unique_tokens.add(word_info[1])
         if not tag or not doc:
-            continue
+            continue      
         tags.append(int(tag.group(1)))
         documents.append(doc)
+    unique_tokens = sorted(unique_tokens)
+    output.save_list_2_txt("unique_tokens.txt", unique_tokens)    
+    output.save_pickle("unique_tokens.pkl", unique_tokens)
+    output.save_pickle("documents.pkl", documents)
+    output.save_pickle("tags.pkl", tags)
+
 print("Vocabulary Length:", len(unique_tokens))
 print("Sample Size:", len(documents))
 print("Size of y:", len(tags))
-#Frequencies:
-token_raw_freq = []
-unique_tokens = sorted(unique_tokens)
-print("unique_tokens:", unique_tokens)
-for doc in documents:
-    freq = 0
-    raw_freq = []
-    for token in unique_tokens:
-        raw_freq.append(sum(1 if token == word else 0 for word in doc))
-    token_raw_freq.append(raw_freq)
 
-for i,doc in enumerate(documents):
-    print("doc: ", doc)
-    print(token_raw_freq[i])
+#Frequencies:
+if SKIP_TEXT_NORMALIZATION:
+    token_raw_freq = output.load_pickle("token_raw_freq.pkl")
+else:
+    token_raw_freq = []
+    for i,doc in enumerate(documents):
+        print("Processing Document", i)
+        freq = 0
+        raw_freq = []
+        for token in unique_tokens:
+            raw_freq.append(sum(1 if token == word else 0 for word in doc))
+        token_raw_freq.append(raw_freq)
+    output.save_pickle("token_raw_freq.pkl", token_raw_freq)
+
+#Train/Test Split
+X_train, X_test, y_train, y_test = train_test_split(token_raw_freq, tags, test_size=TEST_SAMPLE_RATIO, random_state=999)
+
+#Model Training
+clasifier = make_pipeline(StandardScaler(), PCA(n_components=min(len(X_train), len(X_train[0]))), SGDClassifier(max_iter=50000, tol=1e-3))
+clasifier.fit(X_train, y_train)
+y_predicted = clasifier.predict(X_test)
+report = classification_report(y_test, y_predicted) + '\n' + str(confusion_matrix(y_test, y_predicted)) + '\n'
+print(report)
+output.save_text(report, "classification_report.txt")
+
+#Senticon analysis
+
 
 
